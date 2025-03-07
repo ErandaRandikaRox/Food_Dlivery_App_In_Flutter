@@ -1,12 +1,15 @@
+import 'package:flutter/material.dart';
+
 import 'food.dart';
 
-class Restaurant {
-  final List<Food> _menu = [
+class Restaurant extends ChangeNotifier {
+  final List<Food> menu = [
     // 🍔 Burgers
     Food(
       name: "Cheese Burger",
       description: "A burger loaded with melted cheese",
-      imgPath: 'assets/images/cheese_burger.png',
+      imgPath:
+          'assets/images/cbig-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon.jpg',
       price: 5.99,
       categories: FoodCategories.burgers,
       availableAddons: [

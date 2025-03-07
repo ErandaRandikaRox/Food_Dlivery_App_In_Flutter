@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_current_location.dart';
 import 'package:food_delivery_app/components/my_discription_box.dart';
@@ -5,6 +6,8 @@ import 'package:food_delivery_app/components/my_drawer.dart';
 import 'package:food_delivery_app/components/my_sliver_app_bar.dart';
 import 'package:food_delivery_app/components/my_tab_bar.dart';
 import 'package:food_delivery_app/models/food.dart';
+import 'package:food_delivery_app/models/resturant.dart';
+import 'package:provider/provider.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -13,8 +16,7 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage>
-    with SingleTickerProviderStateMixin {
+class _HomepageState extends State<Homepage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -32,68 +34,65 @@ class _HomepageState extends State<Homepage>
     super.dispose();
   }
 
-  // short out of and return  list of that belong to specific catergory
-List<Food> filterMenuByCategory(FoodCategories category, List<Food> fullMenu) {
-  return fullMenu.where((food) => food.category == category).toList();
-}
-  //return the list of foods in given catergory
+  // Filter menu by category
+  List<Food> filterMenuByCategory(FoodCategories category, List<Food> fullMenu) {
+    return fullMenu.where((food) => food.categories == category).toList();
+  }
 
+  // Return list of widgets containing food items for each category
+  List<Widget> getFoodInThis(List<Food> fullMenu) {
+    return FoodCategories.values.map((category) {
+      List<Food> categoryMenu = filterMenuByCategory(category, fullMenu);
 
-
-
-
+      return ListView.builder(
+        shrinkWrap: true,
+        itemCount: categoryMenu.length,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          final food = categoryMenu[index];
+          return ListTile(
+            leading: Image.asset(
+              food.imgPath,
+              width: 50,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
+            title: Text(food.name),
+            subtitle: Text('\$${food.price.toStringAsFixed(2)}'),
+          );
+        },
+      );
+    }).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const MyDrawer(),
       body: NestedScrollView(
-        headerSliverBuilder:
-            (context, innerBoxIsScrolled) => [
-              MySliverAppBar(
-                title: const Text("Food Delivery"),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Divider(
-                      indent: 25,
-                      endIndent: 25,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                    MyCurrentLocation(),
-                    const SizedBox(height: 10),
-                    const MyDiscriptionBox(),
-                    const SizedBox(height: 10),
-                    MyTabBar(tabController: _tabController),
-                  ],
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          MySliverAppBar(
+            title: MyTabBar(tabController: _tabController),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Divider(
+                  indent: 25,
+                  endIndent: 25,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
-              ),
-            ],
-        body: TabBarView(
-          controller: _tabController,
-          physics: const BouncingScrollPhysics(), // Allows smooth scrolling
-          children: [
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("First"),
+                MyCurrentLocation(),
+                const SizedBox(height: 10),
+                const MyDiscriptionBox(),
+              ],
             ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("Secound"),
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("Third"),
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("Fourth"),
-            ),
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => Text("Fifth"),
-            ),
-          ],
+          ),
+        ],
+        body: Consumer<Restaurant>(
+          builder: (context, restaurant, child) => TabBarView(
+            controller: _tabController,
+            children: getFoodInThis(restaurant.menu),
+          ),
         ),
       ),
     );
