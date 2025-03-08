@@ -8,6 +8,7 @@ import 'package:food_delivery_app/components/my_tab_bar.dart';
 import 'package:food_delivery_app/models/food.dart';
 import 'package:food_delivery_app/models/resturant.dart';
 import 'package:provider/provider.dart';
+import 'package:food_delivery_app/components/my_food_tile.dart'; // Import the new file
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -16,7 +17,8 @@ class Homepage extends StatefulWidget {
   State<Homepage> createState() => _HomepageState();
 }
 
-class _HomepageState extends State<Homepage> with SingleTickerProviderStateMixin {
+class _HomepageState extends State<Homepage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -35,8 +37,15 @@ class _HomepageState extends State<Homepage> with SingleTickerProviderStateMixin
   }
 
   // Filter menu by category
-  List<Food> filterMenuByCategory(FoodCategories category, List<Food> fullMenu) {
+  List<Food> filterMenuByCategory(
+      FoodCategories category, List<Food> fullMenu) {
     return fullMenu.where((food) => food.categories == category).toList();
+  }
+
+  // Handle tap on food item
+  void _onFoodTap(Food food) {
+    // Add your tap handling logic here
+    print('Tapped on ${food.name}');
   }
 
   // Return list of widgets containing food items for each category
@@ -50,15 +59,9 @@ class _HomepageState extends State<Homepage> with SingleTickerProviderStateMixin
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           final food = categoryMenu[index];
-          return ListTile(
-            leading: Image.asset(
-              food.imgPath,
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
-            ),
-            title: Text(food.name),
-            subtitle: Text('\$${food.price.toStringAsFixed(2)}'),
+          return MyFoodTile(
+            food: food,
+            onTap: () => _onFoodTap(food),
           );
         },
       );
@@ -72,7 +75,7 @@ class _HomepageState extends State<Homepage> with SingleTickerProviderStateMixin
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MySliverAppBar(
-            title: MyTabBar(tabController: _tabController),
+            title: const Text('Food Delivery'),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -84,6 +87,10 @@ class _HomepageState extends State<Homepage> with SingleTickerProviderStateMixin
                 MyCurrentLocation(),
                 const SizedBox(height: 10),
                 const MyDiscriptionBox(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: MyTabBar(tabController: _tabController),
+                ),
               ],
             ),
           ),

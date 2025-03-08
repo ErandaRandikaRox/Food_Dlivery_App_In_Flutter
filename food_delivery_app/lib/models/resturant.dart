@@ -8,8 +8,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Cheese Burger",
       description: "A burger loaded with melted cheese",
-      imgPath:
-          'assets/images/cbig-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon.jpg',
+      imgPath: 'assets/images/mango.jpg',
       price: 5.99,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -20,7 +19,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Double Patty Burger",
       description: "Two juicy beef patties with fresh lettuce",
-      imgPath: 'assets/images/double_patty.png',
+      imgPath: 'assets/images/1.jpg',
       price: 7.99,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -31,7 +30,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chicken Burger",
       description: "Crispy fried chicken with lettuce and mayo",
-      imgPath: 'assets/images/chicken_burger.png',
+      imgPath: 'assets/images/1.jpg',
       price: 6.49,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -42,7 +41,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Veggie Burger",
       description: "Healthy vegetarian patty with fresh veggies",
-      imgPath: 'assets/images/veggie_burger.png',
+      imgPath: 'assets/images/1.jpg',
       price: 5.49,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -53,7 +52,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "BBQ Bacon Burger",
       description: "Smoky BBQ sauce with crispy bacon and cheddar",
-      imgPath: 'assets/images/bbq_bacon_burger.png',
+      imgPath: 'assets/images/1.jpg',
       price: 8.49,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -66,7 +65,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Caesar Salad",
       description: "Classic Caesar with fresh romaine and parmesan",
-      imgPath: 'assets/images/caesar_salad.png',
+      imgPath: 'assets/images/1.jpg',
       price: 6.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -77,7 +76,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Greek Salad",
       description: "Fresh cucumbers, tomatoes, olives, and feta",
-      imgPath: 'assets/images/greek_salad.png',
+      imgPath: 'assets/images/1.jpg',
       price: 7.49,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -88,7 +87,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Garden Salad",
       description: "Mixed greens with fresh vegetables and vinaigrette",
-      imgPath: 'assets/images/garden_salad.png',
+      imgPath: 'assets/images/1.jpg',
       price: 5.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -99,7 +98,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Cobb Salad",
       description: "Chicken, bacon, egg, blue cheese, and avocado",
-      imgPath: 'assets/images/cobb_salad.png',
+      imgPath: 'assets/images/mango.jpg',
       price: 9.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -110,7 +109,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Quinoa Salad",
       description: "Protein-packed quinoa with fresh veggies",
-      imgPath: 'assets/images/quinoa_salad.png',
+      imgPath: 'assets/images/1.jpg',
       price: 7.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -123,7 +122,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "French Fries",
       description: "Crispy golden fries served with ketchup",
-      imgPath: 'assets/images/french_fries.png',
+      imgPath: 'assets/images/1.jpg',
       price: 3.49,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -134,7 +133,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Onion Rings",
       description: "Crispy onion rings with tangy dipping sauce",
-      imgPath: 'assets/images/onion_rings.png',
+      imgPath: 'assets/images/1.jpg',
       price: 4.49,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -145,7 +144,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Garlic Bread",
       description: "Toasted bread with garlic butter and herbs",
-      imgPath: 'assets/images/garlic_bread.png',
+      imgPath: 'assets/images/1.jpg',
       price: 3.99,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -156,7 +155,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Mozzarella Sticks",
       description: "Crispy mozzarella sticks with marinara sauce",
-      imgPath: 'assets/images/mozzarella_sticks.png',
+      imgPath: 'assets/images/1.jpg',
       price: 5.99,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -167,7 +166,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Sweet Potato Fries",
       description: "Healthy alternative with a sweet crunch",
-      imgPath: 'assets/images/sweet_potato_fries.png',
+      imgPath: 'assets/images/1.jpg',
       price: 4.99,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -180,7 +179,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chocolate Cake",
       description: "Rich and moist chocolate cake slice",
-      imgPath: 'assets/images/chocolate_cake.png',
+      imgPath: 'assets/images/1.jpg',
       price: 6.99,
       categories: FoodCategories.desserts,
       availableAddons: [
@@ -191,7 +190,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Ice Cream Sundae",
       description: "Vanilla ice cream with chocolate drizzle",
-      imgPath: 'assets/images/ice_cream_sundae.png',
+      imgPath: 'assets/images/1.jpg ',
       price: 5.49,
       categories: FoodCategories.desserts,
       availableAddons: [
@@ -204,7 +203,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Cola",
       description: "Classic refreshing soda",
-      imgPath: 'assets/images/cola.png',
+      imgPath: 'assets/images/1.jpg',
       price: 1.99,
       categories: FoodCategories.drinks,
       availableAddons: [
@@ -215,7 +214,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Orange Juice",
       description: "Freshly squeezed orange juice",
-      imgPath: 'assets/images/orange_juice.png',
+      imgPath: 'assets/images/orange_juice.jpg',
       price: 3.49,
       categories: FoodCategories.drinks,
       availableAddons: [
