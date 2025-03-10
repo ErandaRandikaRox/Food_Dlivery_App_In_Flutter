@@ -3,8 +3,6 @@ import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/models/food.dart';
 import 'package:food_delivery_app/models/resturant.dart';
 import 'package:provider/provider.dart';
-import 'package:food_delivery_app/models/cart_page.dart';
-import 'package:food_delivery_app/models/resturant.dart';
 
 class FoodPage extends StatefulWidget {
   final Food food;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/themes/Dart_theme.dart';
-import 'package:food_delivery_app/themes/Theme_provider.dart';
 import 'package:food_delivery_app/themes/light_theme.dart';
 
 class ThemeProvider with ChangeNotifier {
