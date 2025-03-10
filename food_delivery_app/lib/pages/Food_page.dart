@@ -77,7 +77,8 @@ class _FoodPageState extends State<FoodPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Theme.of(context).colorScheme.inversePrimary,
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
                             ),
                           ),
                           child: Padding(
@@ -106,7 +107,8 @@ class _FoodPageState extends State<FoodPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Theme.of(context).colorScheme.inversePrimary,
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary,
                             ),
                           ),
                           child: ListView.builder(
@@ -121,7 +123,8 @@ class _FoodPageState extends State<FoodPage> {
                                 subtitle: Text(
                                   '\$${addon.price.toStringAsFixed(2)}',
                                   style: TextStyle(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                                 value: selectedAddons[addon],
