@@ -22,7 +22,7 @@ class Food {
 }
 
 // Food categories (fixed spelling mistakes)
-enum FoodCategories { burgers, salads, sides, desserts, drinks }
+enum FoodCategories { burgers, salads, sides, desserts, drinks, Pizza, Vegetarian }
 
 // Food Add-ons (fixed syntax issues)
 class Addon {

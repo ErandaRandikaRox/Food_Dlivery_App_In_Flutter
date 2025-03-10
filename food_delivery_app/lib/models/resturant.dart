@@ -235,6 +235,8 @@ class Restaurant extends ChangeNotifier {
   // user cart
   final List<CartItems> cart = [];
 
+  get cartItems => null;
+
   // Add to cart
   void addToCart(Food food, List<Addon> selectedAddons) {
     // Check if an item with the same food and addons already exists
