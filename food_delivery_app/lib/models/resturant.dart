@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/models/cart_page.dart';
 
 import 'food.dart';
 
@@ -230,15 +232,95 @@ class Restaurant extends ChangeNotifier {
   operation
   */
 
-  // add to cart
+  // user cart
+  final List<CartItems> cart = [];
 
-  // remove from cart
+  // Add to cart
+  void addToCart(Food food, List<Addon> selectedAddons) {
+    // Check if an item with the same food and addons already exists
+    CartItems? cartItem = cart.firstWhere(
+      (item) =>
+          item.food == food && listEquals(item.selectedAddons, selectedAddons),
+      orElse: () => CartItems(food: food, selectedAddons: selectedAddons),
+    );
 
-  // total price of the cart
+    if (cart.contains(cartItem)) {
+      cartItem.quantity++; // Fixed typo: quentity -> quantity
+    } else {
+      cart.add(cartItem);
+    }
+    notifyListeners();
+  }
 
-  // get the total number of items in cart
+  // Remove from cart
+  void removeFromCart(CartItems cartItem) {
+    int cartIndex = cart.indexOf(cartItem);
+    if (cartIndex != -1) {
+      if (cart[cartIndex].quantity > 1) {
+        cart[cartIndex].quantity--; // Fixed typo
+      } else {
+        cart.removeAt(cartIndex);
+      }
+      notifyListeners();
+    }
+  }
 
-  // clear cart
+  // Total price of the cart
+  double getTotalPrice() {
+    double total = 0.0;
+    for (CartItems cartItem in cart) {
+      double itemTotal = cartItem.food.price;
+      for (Addon addon in cartItem.selectedAddons) {
+        itemTotal += addon.price;
+      }
+      total += itemTotal * cartItem.quantity; // Fixed typo
+    }
+    return total;
+  }
+
+  // Get the total number of items in cart
+  int getItemCount() {
+    int totalItemCount = 0;
+    for (CartItems cartItem in cart) {
+      totalItemCount += cartItem.quantity; // Fixed typo
+    }
+    return totalItemCount;
+  }
+
+  // Clear cart
+  void clearCart() {
+    cart.clear();
+    notifyListeners();
+  }
+
+  // Helper functions
+
+  // Generate a receipt
+  String generateReceipt() {
+    String receipt = "Receipt\n\n";
+    for (CartItems item in cart) {
+      receipt +=
+          "${item.quantity}x ${item.food.name} - \$${item.food.price.toStringAsFixed(2)}\n";
+      for (Addon addon in item.selectedAddons) {
+        receipt += "  + ${addon.name} - \$${addon.price.toStringAsFixed(2)}\n";
+      }
+    }
+    receipt += "\nTotal: \$${getTotalPrice().toStringAsFixed(2)}";
+    return receipt;
+  }
+
+  // Format double value to currency
+  String formatPrice(double price) {
+    return "\$${price.toStringAsFixed(2)}";
+  }
+
+  // Format list of addons into summary
+  String formatAddons(List<Addon> addons) {
+    return addons.isEmpty
+        ? "None"
+        : addons.map((addon) => addon.name).join(", ");
+  }
+}
 
   /*
   H E L P E R   F U N C T I O N S
@@ -249,4 +331,4 @@ class Restaurant extends ChangeNotifier {
   // format double value
 
   // format list of abbandons into the summary
-}
+

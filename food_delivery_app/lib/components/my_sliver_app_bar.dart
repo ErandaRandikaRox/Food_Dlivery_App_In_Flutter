@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MySliverAppBar extends StatelessWidget {
   final Widget child;
   final Widget title;
-  const MySliverAppBar({super.key, required this.child, required this.title});
+  const MySliverAppBar({super.key, required this.child, required this.title, required IconData icon});
 
   @override
   Widget build(BuildContext context) {

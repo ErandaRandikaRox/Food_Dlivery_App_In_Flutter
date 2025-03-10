@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/models/food.dart';
+import 'package:food_delivery_app/models/resturant.dart';
+import 'package:provider/provider.dart';
+import 'package:food_delivery_app/models/cart_page.dart';
+import 'package:food_delivery_app/models/resturant.dart';
 
 class FoodPage extends StatefulWidget {
   final Food food;
@@ -11,23 +15,38 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
-  late Map<Addon, bool> selectedAddons;
+  Map<Addon, bool> selectedAddons = {};
 
   @override
   void initState() {
     super.initState();
-    // Initialize selectedAddons with all addons set to false
-    selectedAddons = {};
+    selectedAddons = {
+      for (var addon in widget.food.availableAddons) addon: false
+    };
+  }
+
+  void addToCart() {
+    List<Addon> currentlySelectedAddons = [];
     for (Addon addon in widget.food.availableAddons) {
-      selectedAddons[addon] = false;
+      if (selectedAddons[addon] == true) {
+        currentlySelectedAddons.add(addon);
+      }
     }
+
+    // Add to cart using Provider
+    Provider.of<Restaurant>(context, listen: false)
+        .addToCart(widget.food, currentlySelectedAddons);
+
+    // Show confirmation
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Added to cart!")),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Main content
         Scaffold(
           body: SingleChildScrollView(
             child: Column(
@@ -47,7 +66,7 @@ class _FoodPageState extends State<FoodPage> {
                           ),
                         ),
                         Text(
-                          widget.food.price.toString(),
+                          '\$${widget.food.price.toStringAsFixed(2)}',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -58,8 +77,7 @@ class _FoodPageState extends State<FoodPage> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary,
+                              color: Theme.of(context).colorScheme.inversePrimary,
                             ),
                           ),
                           child: Padding(
@@ -83,13 +101,12 @@ class _FoodPageState extends State<FoodPage> {
                             color: Theme.of(context).colorScheme.primary,
                           ),
                         ),
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 20),
                         Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary,
+                              color: Theme.of(context).colorScheme.inversePrimary,
                             ),
                           ),
                           child: ListView.builder(
@@ -102,10 +119,9 @@ class _FoodPageState extends State<FoodPage> {
                               return CheckboxListTile(
                                 title: Text(addon.name),
                                 subtitle: Text(
-                                  '\$${addon.price.toString()}',
+                                  '\$${addon.price.toStringAsFixed(2)}',
                                   style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
+                                    color: Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                                 value: selectedAddons[addon],
@@ -120,7 +136,7 @@ class _FoodPageState extends State<FoodPage> {
                         ),
                         const SizedBox(height: 20),
                         MyButton(
-                          ontap: () {},
+                          ontap: addToCart, // Fixed: Pass function reference
                           text: 'Add To Cart',
                         ),
                       ],
@@ -131,21 +147,18 @@ class _FoodPageState extends State<FoodPage> {
             ),
           ),
         ),
-        // Overlay with transparent back button
         SafeArea(
           child: Container(
-            height: 60, // Adjusted height for a compact button
-            width: 60, // Added width to match circular shape
+            height: 60,
+            width: 60,
             decoration: const BoxDecoration(
-              color: Colors.transparent, // Made fully transparent
+              color: Colors.transparent,
               shape: BoxShape.circle,
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
+                onPressed: () => Navigator.pop(context),
                 icon: Icon(
                   Icons.arrow_back_ios,
                   color: Theme.of(context).colorScheme.inversePrimary,
