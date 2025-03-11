@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/cart_page.dart';
 import 'package:intl/intl.dart';
+
 import 'food.dart';
 
 class Restaurant extends ChangeNotifier {
@@ -21,7 +22,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Double Patty Burger",
       description: "Two juicy beef patties with fresh lettuce",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Double Patty Burger.jpg',
       price: 7.99,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -32,7 +33,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Chicken Burger",
       description: "Crispy fried chicken with lettuce and mayo",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Chicken Burger.jpg',
       price: 6.49,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -66,7 +67,7 @@ class Restaurant extends ChangeNotifier {
     // Salads
     Food(
       name: "Caesar Salad",
-      description: "Classic Caesar with fresh romaine and parmesan",
+      description: "Classic Caesar with fresh romaine and pxarmesan",
       imgPath: 'assets/images/1.jpg',
       price: 6.99,
       categories: FoodCategories.salads,
