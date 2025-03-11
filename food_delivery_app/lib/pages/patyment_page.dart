@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
+import 'package:food_delivery_app/pages/delivery_progress_page.dart';
 
 class PaymentPage extends StatefulWidget {
   final Function(CreditCardBrand) onCreditCardWidgetChange;
@@ -40,6 +41,13 @@ class _PaymentPageState extends State<PaymentPage> {
       print('Expiry Date: $expiryDate');
       print('Card Holder: $cardHolderName');
       print('CVV: $cvvCode');
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DeliveryProgressPage(),
+        ),
+      );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please fill all fields correctly')),
