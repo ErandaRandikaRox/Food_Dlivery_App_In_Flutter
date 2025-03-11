@@ -44,7 +44,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Veggie Burger",
       description: "Healthy vegetarian patty with fresh veggies",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Veggie Burger.jpg',
       price: 5.49,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -55,7 +55,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "BBQ Bacon Burger",
       description: "Smoky BBQ sauce with crispy bacon and cheddar",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/BBQ Bacon Burger.jpg',
       price: 8.49,
       categories: FoodCategories.burgers,
       availableAddons: [
@@ -68,7 +68,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Caesar Salad",
       description: "Classic Caesar with fresh romaine and pxarmesan",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Caesar Salad.jpg',
       price: 6.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -79,7 +79,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Greek Salad",
       description: "Fresh cucumbers, tomatoes, olives, and feta",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Greek Salad.jpg',
       price: 7.49,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -90,7 +90,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Garden Salad",
       description: "Mixed greens with fresh vegetables and vinaigrette",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Garden Salad.jpg',
       price: 5.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -101,7 +101,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Cobb Salad",
       description: "Chicken, bacon, egg, blue cheese, and avocado",
-      imgPath: 'assets/images/mango.jpg',
+      imgPath: 'assets/images/Cobb Salad.jpg',
       price: 9.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -112,7 +112,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Quinoa Salad",
       description: "Protein-packed quinoa with fresh veggies",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Quinoa Salad.jpg',
       price: 7.99,
       categories: FoodCategories.salads,
       availableAddons: [
@@ -125,7 +125,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "French Fries",
       description: "Crispy golden fries served with ketchup",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/French Fries.jpg',
       price: 3.49,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -136,7 +136,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Onion Rings",
       description: "Crispy onion rings with tangy dipping sauce",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Onion Rings.jpg',
       price: 4.49,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -147,7 +147,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Garlic Bread",
       description: "Toasted bread with garlic butter and herbs",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Garlic Bread.jpg',
       price: 3.99,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -158,7 +158,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Mozzarella Sticks",
       description: "Crispy mozzarella sticks with marinara sauce",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Mozzarella Sticks.jpg',
       price: 5.99,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -169,7 +169,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Sweet Potato Fries",
       description: "Healthy alternative with a sweet crunch",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Sweet Potato Fries.jpg',
       price: 4.99,
       categories: FoodCategories.sides,
       availableAddons: [
@@ -180,9 +180,9 @@ class Restaurant extends ChangeNotifier {
 
     // Desserts
     Food(
-      name: "Chocolate Cake",
+      name: "ChocolateCake ",
       description: "Rich and moist chocolate cake slice",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Chocolate Cake.jpg',
       price: 6.99,
       categories: FoodCategories.desserts,
       availableAddons: [
@@ -193,7 +193,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Ice Cream Sundae",
       description: "Vanilla ice cream with chocolate drizzle",
-      imgPath: 'assets/images/1.jpg ',
+      imgPath: 'assets/images/Ice Cream Sundae.jpg',
       price: 5.49,
       categories: FoodCategories.desserts,
       availableAddons: [
@@ -206,7 +206,7 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Cola",
       description: "Classic refreshing soda",
-      imgPath: 'assets/images/1.jpg',
+      imgPath: 'assets/images/Cola.jpg',
       price: 1.99,
       categories: FoodCategories.drinks,
       availableAddons: [
@@ -217,12 +217,138 @@ class Restaurant extends ChangeNotifier {
     Food(
       name: "Orange Juice",
       description: "Freshly squeezed orange juice",
-      imgPath: 'assets/images/orange_juice.jpg',
+      imgPath: 'assets/images/Orange Juice.jpg',
       price: 3.49,
       categories: FoodCategories.drinks,
       availableAddons: [
         Addon(name: 'Extra pulp', price: 0.50),
         Addon(name: 'Ice cubes', price: 0.25),
+      ],
+    ),
+
+    // Pizza
+    Food(
+      name: "Margherita Pizza",
+      description:
+          "Classic Italian pizza with tomato sauce, mozzarella, and basil",
+      imgPath: 'assets/images/Margherita Pizza.jpg',
+      price: 8.99,
+      categories: FoodCategories.Pizza,
+      availableAddons: [
+        Addon(name: 'Extra Cheese', price: 1.50),
+        Addon(name: 'Mushrooms', price: 1.00),
+      ],
+    ),
+
+    Food(
+      name: "Pepperoni Pizza",
+      description: "Spicy pepperoni slices on a cheesy tomato base",
+      imgPath: 'assets/images/Pepperoni Pizza.jpg',
+      price: 9.99,
+      categories: FoodCategories.Pizza,
+      availableAddons: [
+        Addon(name: 'Extra Pepperoni', price: 2.00),
+        Addon(name: 'Chili Flakes', price: 0.50),
+      ],
+    ),
+
+    Food(
+      name: "BBQ Chicken Pizza",
+      description: "Grilled chicken, BBQ sauce, onions, and cheese",
+      imgPath: 'assets/images/BBQ Chicken Pizza.jpg',
+      price: 10.49,
+      categories: FoodCategories.Pizza,
+      availableAddons: [
+        Addon(name: 'Extra Chicken', price: 2.50),
+        Addon(name: 'Jalapenos', price: 1.00),
+      ],
+    ),
+
+    Food(
+      name: "Veggie Supreme Pizza",
+      description: "A mix of fresh bell peppers, olives, mushrooms, and onions",
+      imgPath: 'assets/images/Veggie Supreme Pizza.jpg',
+      price: 9.29,
+      categories: FoodCategories.Pizza,
+      availableAddons: [
+        Addon(name: 'Extra Olives', price: 1.00),
+        Addon(name: 'Feta Cheese', price: 1.50),
+      ],
+    ),
+
+    Food(
+      name: "Hawaiian Pizza",
+      description: "Classic combo of ham and pineapple on a cheesy base",
+      imgPath: 'assets/images/Hawaiian Pizza.jpg',
+      price: 10.99,
+      categories: FoodCategories.Pizza,
+      availableAddons: [
+        Addon(name: 'Extra Pineapple', price: 1.50),
+        Addon(name: 'Bacon Bits', price: 2.00),
+      ],
+    ),
+
+    Food(
+      name: "Grilled Veggie Platter",
+      description:
+          "A healthy mix of grilled vegetables with herbs and olive oil",
+      imgPath: 'assets/images/Grilled Veggie Platter.jpg',
+      price: 7.49,
+      categories: FoodCategories.Vegetarian,
+      availableAddons: [
+        Addon(name: 'Extra Olives', price: 0.75),
+        Addon(name: 'Hummus Dip', price: 1.25),
+      ],
+    ),
+
+    Food(
+      name: "Veggie Burger",
+      description:
+          "A delicious plant-based burger with fresh lettuce and tomatoes",
+      imgPath: 'assets/images/Veggie Burger.jpg',
+      price: 8.49,
+      categories: FoodCategories.Vegetarian,
+      availableAddons: [
+        Addon(name: 'Cheese Slice', price: 1.00),
+        Addon(name: 'Avocado', price: 1.50),
+      ],
+    ),
+
+    Food(
+      name: "Mediterranean Salad",
+      description: "Fresh cucumbers, tomatoes, olives, and feta cheese",
+      imgPath: 'assets/images/Mediterranean Salad.jpg',
+      price: 6.99,
+      categories: FoodCategories.Vegetarian,
+      availableAddons: [
+        Addon(name: 'Extra Feta', price: 1.50),
+        Addon(name: 'Croutons', price: 0.75),
+      ],
+    ),
+
+    Food(
+      name: "Stuffed Bell Peppers",
+      description:
+          "Bell peppers filled with a mix of quinoa, beans, and spices",
+      imgPath: 'assets/images/Stuffed Bell Peppers.jpg',
+      price: 8.79,
+      categories: FoodCategories.Vegetarian,
+      availableAddons: [
+        Addon(name: 'Extra Cheese', price: 1.25),
+        Addon(name: 'Spicy Salsa', price: 0.75),
+      ],
+    ),
+
+    Food(
+      name: "Spinach and Ricotta Pasta",
+      description:
+          "Fresh spinach and creamy ricotta cheese in a light tomato sauce",
+      imgPath: 'assets/images/Spinach and Ricotta Pasta.jpg',
+      price: 9.99,
+      categories: FoodCategories.Vegetarian,
+      availableAddons: [
+        Addon(name: 'Parmesan Cheese', price: 1.50),
+        Addon(name: 'Garlic Bread', price: 2.00),
       ],
     ),
   ];
