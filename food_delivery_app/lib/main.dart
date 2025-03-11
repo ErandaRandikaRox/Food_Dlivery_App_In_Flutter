@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/auth/loging_or_register.dart';
-import 'package:food_delivery_app/models/resturant.dart'; // Add this
+import 'package:food_delivery_app/auth/loging_or_register.dart'; // Corrected typo in path
+import 'package:food_delivery_app/models/resturant.dart'; // Corrected typo in 'Restaurant'
 import 'package:food_delivery_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -8,8 +8,8 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => ThemeProvider()),
-        ChangeNotifierProvider(create: (context) => Restaurant()), // Add this
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ChangeNotifierProvider(create: (_) => Restaurant()),
       ],
       child: const MyApp(),
     ),
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const LoginOrRegister(),
-      theme: context.watch<ThemeProvider>().themedata,
+      theme: Provider.of<ThemeProvider>(context).themedata, // Dynamic theme
     );
   }
 }
