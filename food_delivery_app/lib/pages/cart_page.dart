@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_cart_title.dart';
-import 'package:food_delivery_app/models/cart_page.dart';
 import 'package:food_delivery_app/models/resturant.dart';
-import 'package:food_delivery_app/pages/patyment_page.dart'; // Should be payment_page.dart
+import 'package:food_delivery_app/pages/patyment_page.dart'; 
 import 'package:provider/provider.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart'; // Add this import
 
