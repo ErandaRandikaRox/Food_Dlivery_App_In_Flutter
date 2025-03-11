@@ -6,7 +6,7 @@ import 'food.dart';
 
 class Restaurant extends ChangeNotifier {
   final List<Food> menu = [
-    // 🍔 Burgers
+    // Burgers
     Food(
       name: "Cheese Burger",
       description: "A burger loaded with melted cheese",
@@ -63,7 +63,7 @@ class Restaurant extends ChangeNotifier {
       ],
     ),
 
-    // 🥗 Salads
+    // Salads
     Food(
       name: "Caesar Salad",
       description: "Classic Caesar with fresh romaine and parmesan",
@@ -120,7 +120,7 @@ class Restaurant extends ChangeNotifier {
       ],
     ),
 
-    // 🍟 Sides
+    // Sides
     Food(
       name: "French Fries",
       description: "Crispy golden fries served with ketchup",
@@ -177,7 +177,7 @@ class Restaurant extends ChangeNotifier {
       ],
     ),
 
-    // 🍰 Desserts
+    // Desserts
     Food(
       name: "Chocolate Cake",
       description: "Rich and moist chocolate cake slice",
@@ -201,7 +201,7 @@ class Restaurant extends ChangeNotifier {
       ],
     ),
 
-    // 🥤 Drinks
+    // Drinks
     Food(
       name: "Cola",
       description: "Classic refreshing soda",
@@ -324,13 +324,39 @@ class Restaurant extends ChangeNotifier {
   }
 }
 
-  /*
+/*
   H E L P E R   F U N C T I O N S
   */
 
-  // generate the recepy
+// generate the recepy
+String displayRecepy() {
+  final recepy = StringBuffer();
+  recepy.writeln('Here is your recepy');
+  recepy.writeln('---------------------');
 
-  // format double value
+  // format the date to include upto secound only
+  String formDateFormat =
+      DateFormat('yyyy-MM-dd – kk:mm').format(DateTime.now());
 
-  // format list of abbandons into the summary
+  recepy.writeln('Date: $formDateFormat');
+  recepy.writeln('---------------------');
 
+  for (final cartItems in cart) {
+    recepy.writeln(
+        '${cartItems.food.name} - ${cartItems.quantity}x ${_formatprice(cartItems.food.price)}');
+
+    if (cartItems.selectedAddons.isNotEmpty) {
+      recepy.writeln('Addons: ${_formatAddons(cartItems.selectedAddons)}');
+    }
+  }
+}
+
+// format double value
+String _formatprice(double price) {
+  return '\$ ${price.toString()}';
+}
+
+// format list of abbandons into the summary
+String _formatAddons(List<Addon> addons) {
+  return addons.map((addons) => "\$ ${addons.name}").join(", ");
+}
