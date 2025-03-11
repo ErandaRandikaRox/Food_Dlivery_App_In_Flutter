@@ -75,6 +75,8 @@ class _HomepageState extends State<Homepage>
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MySliverAppBar(
             title: const Text('Food Delivery'),
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             icon: (Icons.card_travel),
             child: Column(
               mainAxisSize: MainAxisSize.min,

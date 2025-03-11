@@ -8,7 +8,7 @@ class MySliverAppBar extends StatelessWidget {
       {super.key,
       required this.child,
       required this.title,
-      required IconData icon});
+      required IconData icon, required Color foregroundColor, required Color backgroundColor});
 
   @override
   Widget build(BuildContext context) {
