@@ -1,14 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/auth/loging_or_register.dart'; // Corrected typo in path
-import 'package:food_delivery_app/models/resturant.dart'; // Corrected typo in 'Restaurant'
+import 'package:food_delivery_app/services/auth/loging_or_register.dart';
+import 'package:food_delivery_app/models/resturant.dart';
 import 'package:food_delivery_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'firebase_options.dart'; // Import Firebase options
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-    await Firebase.initializeApp(); // Ensure Firebase initializes correctly
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
   } catch (e) {
     print('Firebase initialization failed: $e');
   }
