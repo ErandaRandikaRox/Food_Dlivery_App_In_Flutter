@@ -7,7 +7,7 @@ class Food {
   final double price; // 5.99
   final FoodCategories categories; // FoodCategories.burgers
   List<Addon>
-  availableAddons; // [Addon(name: "Extra Cheese", price: 0.99), Addon(name: "Extra Patty", price
+      availableAddons; // [Addon(name: "Extra Cheese", price: 0.99), Addon(name: "Extra Patty", price
 
   Food({
     required this.name,
@@ -22,7 +22,15 @@ class Food {
 }
 
 // Food categories (fixed spelling mistakes)
-enum FoodCategories { burgers, salads, sides, desserts, drinks, Pizza, Vegetarian }
+enum FoodCategories {
+  burgers,
+  salads,
+  sides,
+  desserts,
+  drinks,
+  Pizza,
+  Vegetarian
+}
 
 // Food Add-ons (fixed syntax issues)
 class Addon {

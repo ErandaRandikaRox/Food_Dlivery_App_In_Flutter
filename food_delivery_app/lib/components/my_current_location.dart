@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
 
 class MyCurrentLocation extends StatelessWidget {
-  MyCurrentLocation({super.key});
+  const MyCurrentLocation({super.key});
 
   void openLocationSearchBox(BuildContext context) {
     // Using showDialog for a custom alert dialog
     showDialog(
       context: context,
-      builder:
-          (context) => AlertDialog(
-            title: Text("Your Location"),
-            content: TextField(
-              decoration: InputDecoration(hintText: "Enter the location"),
-            ),
-            actions: [
-              // Save buton
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("Save"),
-              ),
-
-              // close button
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(); // Close the dialog
-                },
-                child: Text("Close"),
-              ),
-            ],
+      builder: (context) => AlertDialog(
+        title: const Text("Your Location"),
+        content: const TextField(
+          decoration: InputDecoration(hintText: "Enter the location"),
+        ),
+        actions: [
+          // Save buton
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("Save"),
           ),
+
+          // close button
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text("Close"),
+          ),
+        ],
+      ),
     );
   }
 
@@ -53,9 +52,9 @@ class MyCurrentLocation extends StatelessWidget {
                   // Open the location search box dialog
                   openLocationSearchBox(context);
                 },
-                child: Text(
+                child: const Text(
                   "DELIVER NOW",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
@@ -66,7 +65,7 @@ class MyCurrentLocation extends StatelessWidget {
                 height: 1,
               ), // Space between title and the next section
               // Dropdown Menu Icon
-              Row(
+              const Row(
                 children: [
                   Expanded(
                     child: Text(

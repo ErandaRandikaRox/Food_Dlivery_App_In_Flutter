@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/components/MyCartTile.dart';
 import 'package:food_delivery_app/components/my_cart_title.dart';
 import 'package:food_delivery_app/models/resturant.dart';
-import 'package:food_delivery_app/pages/patyment_page.dart'; 
+import 'package:food_delivery_app/pages/patyment_page.dart'; // Note: Fix typo 'patyment_page' -> 'payment_page'
 import 'package:provider/provider.dart';
-import 'package:flutter_credit_card/flutter_credit_card.dart'; // Add this import
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class CartPage extends StatelessWidget {
-  const CartPage({super.key}); // Added constructor with key
+  const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Fetch cart items from the Restaurant model
+    // Fetch cart items from the Restaurant model using the correct getter
     final restaurant = Provider.of<Restaurant>(context);
-    final cartItems = restaurant.cartItems ?? []; // Ensure the list is not null
+    final cartItems = restaurant.cart; // Use 'cart' instead of 'cartItems'
 
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +30,9 @@ class CartPage extends StatelessWidget {
                     itemCount: cartItems.length,
                     itemBuilder: (context, index) {
                       final cartItem = cartItems[index];
-                      return MyCartTitle(cartItems: cartItem);
+                      return MyCartTile(
+                          cartItems:
+                              cartItem); // Note: Assuming 'MyCartTitle' should be 'MyCartTile'
                     },
                   ),
           ),
@@ -44,7 +47,6 @@ class CartPage extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => PaymentPage(
                       onCreditCardWidgetChange: (CreditCardBrand brand) {
-                        // Handle credit card brand change if needed
                         print('Card brand changed to: ${brand.brandName}');
                       },
                     ),
