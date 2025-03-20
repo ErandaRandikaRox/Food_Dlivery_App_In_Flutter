@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/services/auth/auth_gate.dart';
 import 'package:food_delivery_app/services/auth/loging_or_register.dart';
 import 'package:food_delivery_app/models/resturant.dart';
 import 'package:food_delivery_app/themes/theme_provider.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginOrRegister(),
+      home: AuthGate(),
       theme: Provider.of<ThemeProvider>(context).themedata, // Dynamic theme
     );
   }

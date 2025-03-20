@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/my_textfield.dart';
 import 'package:food_delivery_app/pages/loging_page.dart';
+import 'package:food_delivery_app/services/auth/auth_services.dart';
 
 class Myregister extends StatefulWidget {
   final Function? onTap;
@@ -14,8 +15,37 @@ class Myregister extends StatefulWidget {
 class _MyregisterState extends State<Myregister> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  void register() {
+  AuthServices authServices = AuthServices();
+  if (passwordController.text == confirmPasswordController.text) {
+    try {
+      authServices.signInWithEmailPassword(
+          passwordController.text, confirmPasswordController.text);
+    } catch (e) {
+      showAboutDialog(
+        context: context,
+        buiilder: (context) {  
+          return AlertDialog(
+            title: const Text("Error"),
+            content: Text(e.toString()),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text("OK"),
+              ),
+            ],
+          );
+        }
+      );
+    }
+  }
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +64,7 @@ class _MyregisterState extends State<Myregister> {
               size: 80,
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
-            SizedBox(height: 25),
-
+            const SizedBox(height: 25),
             Text(
               'Food Delivery App',
               style: TextStyle(
@@ -43,34 +72,28 @@ class _MyregisterState extends State<Myregister> {
                 color: Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
-            SizedBox(height: 25),
-
+            const SizedBox(height: 25),
             MyTextfield(
               controller: emailController,
               obsecureText: false,
               hintText: 'Email',
               obscureText: false,
             ),
-
-            SizedBox(height: 25),
-
+            const SizedBox(height: 25),
             MyTextfield(
               controller: passwordController,
               obsecureText: true,
               hintText: 'Password',
               obscureText: true,
             ),
-
-            SizedBox(height: 25),
-
+            const SizedBox(height: 25),
             MyTextfield(
               controller: confirmPasswordController,
               obsecureText: true,
               hintText: 'Confirm Password',
               obscureText: true,
             ),
-            SizedBox(height: 25),
-
+            const SizedBox(height: 25),
             MyButton(
               ontap: () {
                 Navigator.push(
@@ -80,14 +103,12 @@ class _MyregisterState extends State<Myregister> {
               },
               text: "Register",
             ),
-
-            SizedBox(height: 25),
-
+            const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("You already have a account"),
-                SizedBox(width: 10),
+                const Text("You already have a account"),
+                const SizedBox(width: 10),
                 GestureDetector(
                   onTap: () {
                     if (widget.onTap != null) {
