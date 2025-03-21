@@ -21,12 +21,14 @@ class _MyregisterState extends State<Myregister> {
   AuthServices authServices = AuthServices();
   if (passwordController.text == confirmPasswordController.text) {
     try {
-      authServices.signInWithEmailPassword(
-          passwordController.text, confirmPasswordController.text);
+      authServices.signUpWithEmailPassword(  // Changed from signIn to signUp
+          emailController.text, 
+          passwordController.text
+      );
     } catch (e) {
-      showAboutDialog(
+      showDialog(
         context: context,
-        buiilder: (context) {  
+        builder: (context) {
           return AlertDialog(
             title: const Text("Error"),
             content: Text(e.toString()),
@@ -42,6 +44,24 @@ class _MyregisterState extends State<Myregister> {
         }
       );
     }
+  } else {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Error"),
+          content: const Text("Passwords don't match"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      }
+    );
   }
 }
 

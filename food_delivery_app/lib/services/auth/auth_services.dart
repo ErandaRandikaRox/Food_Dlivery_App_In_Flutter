@@ -23,6 +23,7 @@ class AuthServices {
       throw Exception(e.code);
     } catch (e) {
       print(e);
+      throw Exception(e.toString());
     }
   }
 
@@ -39,6 +40,7 @@ class AuthServices {
       throw Exception(e.code);
     } catch (e) {
       print(e);
+      throw Exception(e.toString());
     }
   }
 
