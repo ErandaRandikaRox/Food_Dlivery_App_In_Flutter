@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/themes/Dart_theme.dart';
 import 'package:food_delivery_app/themes/light_theme.dart'; // Adjust path
-import 'package:food_delivery_app/themes/Dart_theme.dart';
+
 
 class ThemeProvider with ChangeNotifier {
   ThemeData _themeData = LightMode;

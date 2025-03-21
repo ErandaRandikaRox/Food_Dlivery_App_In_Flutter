@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/MyCartTile.dart';
-import 'package:food_delivery_app/components/my_cart_title.dart';
 import 'package:food_delivery_app/models/resturant.dart';
 import 'package:food_delivery_app/pages/patyment_page.dart'; // Note: Fix typo 'patyment_page' -> 'payment_page'
 import 'package:provider/provider.dart';
