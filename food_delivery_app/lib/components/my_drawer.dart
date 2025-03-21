@@ -1,9 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_drawer_tile.dart';
-import 'package:food_delivery_app/pages/setting_page.dart'; // Ensure case matches
+import 'package:food_delivery_app/pages/setting_page.dart';
+import 'package:food_delivery_app/services/auth/auth_gate.dart'; // Ensure case matches
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
+
+  void logOut() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +49,7 @@ class MyDrawer extends StatelessWidget {
               icon: Icons.logout,
               text: "L O G O U T",
               onTap: () {
-                Navigator.pop(context);
+                logOut();
               },
             ),
             const SizedBox(height: 25),

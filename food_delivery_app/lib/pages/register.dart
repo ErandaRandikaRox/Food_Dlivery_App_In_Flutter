@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/my_textfield.dart';
-import 'package:food_delivery_app/pages/loging_page.dart';
 import 'package:food_delivery_app/services/auth/auth_services.dart';
 
 class Myregister extends StatefulWidget {
@@ -15,56 +14,54 @@ class Myregister extends StatefulWidget {
 class _MyregisterState extends State<Myregister> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   void register() {
-  AuthServices authServices = AuthServices();
-  if (passwordController.text == confirmPasswordController.text) {
-    try {
-      authServices.signUpWithEmailPassword(  // Changed from signIn to signUp
-          emailController.text, 
-          passwordController.text
-      );
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text("Error"),
-            content: Text(e.toString()),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("OK"),
-              ),
-            ],
-          );
-        }
-      );
-    }
-  } else {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Error"),
-          content: const Text("Passwords don't match"),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text("OK"),
-            ),
-          ],
-        );
+    AuthServices authServices = AuthServices();
+    if (passwordController.text == confirmPasswordController.text) {
+      try {
+        authServices.signUpWithEmailPassword(
+            // Changed from signIn to signUp
+            emailController.text,
+            passwordController.text);
+      } catch (e) {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text("Error"),
+                content: Text(e.toString()),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("OK"),
+                  ),
+                ],
+              );
+            });
       }
-    );
+    } else {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text("Error"),
+              content: const Text("Passwords don't match"),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("OK"),
+                ),
+              ],
+            );
+          });
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -116,10 +113,11 @@ class _MyregisterState extends State<Myregister> {
             const SizedBox(height: 25),
             MyButton(
               ontap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
+                register();
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => LoginPage()),
+                // );
               },
               text: "Register",
             ),
@@ -131,6 +129,7 @@ class _MyregisterState extends State<Myregister> {
                 const SizedBox(width: 10),
                 GestureDetector(
                   onTap: () {
+                    register();
                     if (widget.onTap != null) {
                       widget.onTap!();
                     }
