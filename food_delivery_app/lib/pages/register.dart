@@ -73,78 +73,80 @@ class _MyregisterState extends State<Myregister> {
       backgroundColor:
           Theme.of(context).colorScheme.background, // ✅ Uses theme background
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.lock_open_rounded,
-              size: 80,
-              color: Theme.of(context).colorScheme.inversePrimary,
-            ),
-            const SizedBox(height: 25),
-            Text(
-              'Food Delivery App',
-              style: TextStyle(
-                fontSize: 20,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.lock_open_rounded,
+                size: 80,
                 color: Theme.of(context).colorScheme.inversePrimary,
               ),
-            ),
-            const SizedBox(height: 25),
-            MyTextfield(
-              controller: emailController,
-              obsecureText: false,
-              hintText: 'Email',
-              obscureText: false,
-            ),
-            const SizedBox(height: 25),
-            MyTextfield(
-              controller: passwordController,
-              obsecureText: true,
-              hintText: 'Password',
-              obscureText: true,
-            ),
-            const SizedBox(height: 25),
-            MyTextfield(
-              controller: confirmPasswordController,
-              obsecureText: true,
-              hintText: 'Confirm Password',
-              obscureText: true,
-            ),
-            const SizedBox(height: 25),
-            MyButton(
-              ontap: () {
-                register();
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => LoginPage()),
-                // );
-              },
-              text: "Register",
-            ),
-            const SizedBox(height: 25),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("You already have a account"),
-                const SizedBox(width: 10),
-                GestureDetector(
-                  onTap: () {
-                    register();
-                    if (widget.onTap != null) {
-                      widget.onTap!();
-                    }
-                  },
-                  child: Text(
-                    "Loging",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontWeight: FontWeight.bold,
+              const SizedBox(height: 25),
+              Text(
+                'Food Delivery App',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                ),
+              ),
+              const SizedBox(height: 25),
+              MyTextfield(
+                controller: emailController,
+                obsecureText: false,
+                hintText: 'Email',
+                obscureText: false,
+              ),
+              const SizedBox(height: 25),
+              MyTextfield(
+                controller: passwordController,
+                obsecureText: true,
+                hintText: 'Password',
+                obscureText: true,
+              ),
+              const SizedBox(height: 25),
+              MyTextfield(
+                controller: confirmPasswordController,
+                obsecureText: true,
+                hintText: 'Confirm Password',
+                obscureText: true,
+              ),
+              const SizedBox(height: 25),
+              MyButton(
+                ontap: () {
+                  register();
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => LoginPage()),
+                  // );
+                },
+                text: "Register",
+              ),
+              const SizedBox(height: 25),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("You already have a account"),
+                  const SizedBox(width: 10),
+                  GestureDetector(
+                    onTap: () {
+                      register();
+                      if (widget.onTap != null) {
+                        widget.onTap!();
+                      }
+                    },
+                    child: Text(
+                      "Loging",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
