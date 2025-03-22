@@ -1,10 +1,46 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/resturant.dart';
+import 'package:food_delivery_app/services/database/fireStore.dart';
 import 'package:provider/provider.dart';
 import 'package:food_delivery_app/components/my_recept.dart';
 
-class DeliveryProgressPage extends StatelessWidget {
+class DeliveryProgressPage extends StatefulWidget {
   const DeliveryProgressPage({super.key});
+
+  @override
+  State<DeliveryProgressPage> createState() => _DeliveryProgressPageState();
+}
+
+class _DeliveryProgressPageState extends State<DeliveryProgressPage> {
+  final FirestoreService firestoreService = FirestoreService();
+  bool _isSaving = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Submit order to Firebase after the first frame is built
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      setState(() => _isSaving = true);
+      try {
+        String receipt = context.read<Restaurant>().displayReceipt();
+        await firestoreService.saveOrderToDatabase(receipt);
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Order saved successfully')),
+          );
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to save order: $e')),
+          );
+        }
+      } finally {
+        if (mounted) setState(() => _isSaving = false);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,24 +48,26 @@ class DeliveryProgressPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Delivery Progress"),
         backgroundColor: Colors.transparent,
-        elevation: 0, // Remove shadow for a cleaner look
+        elevation: 0,
       ),
       bottomNavigationBar: _buildBottomNavigationBar(context),
-      body: Consumer<Restaurant>(
-        builder: (context, restaurant, child) {
-          return const Column(
-            children: [
-              Expanded(child: MyReceipt()), // Prevent overflow
-            ],
-          );
-        },
-      ),
+      body: _isSaving
+          ? const Center(child: CircularProgressIndicator())
+          : Consumer<Restaurant>(
+              builder: (context, restaurant, child) {
+                return const Column(
+                  children: [
+                    Expanded(child: MyReceipt()),
+                  ],
+                );
+              },
+            ),
     );
   }
 
   Widget _buildBottomNavigationBar(BuildContext context) {
     return Container(
-      height: 120, // Slightly taller for better presence
+      height: 120,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
@@ -56,7 +94,6 @@ class DeliveryProgressPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Driver Info with Avatar
           Row(
             children: [
               Container(
@@ -70,9 +107,7 @@ class DeliveryProgressPage extends StatelessWidget {
                   ),
                 ),
                 child: IconButton(
-                  onPressed: () {
-                    // Add driver profile action
-                  },
+                  onPressed: () {},
                   icon: const Icon(Icons.person, size: 28),
                   color: Theme.of(context).colorScheme.primary,
                 ),
@@ -104,23 +139,18 @@ class DeliveryProgressPage extends StatelessWidget {
               ),
             ],
           ),
-          // Action Buttons
           Row(
             children: [
               _buildActionButton(
                 context: context,
                 icon: Icons.message,
-                onPressed: () {
-                  // Add message action
-                },
+                onPressed: () {},
               ),
               const SizedBox(width: 15),
               _buildActionButton(
                 context: context,
                 icon: Icons.call,
-                onPressed: () {
-                  // Add call action
-                },
+                onPressed: () {},
               ),
             ],
           ),

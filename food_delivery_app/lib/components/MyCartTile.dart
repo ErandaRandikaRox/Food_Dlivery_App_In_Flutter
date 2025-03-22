@@ -19,12 +19,11 @@ class MyCartTile extends StatelessWidget {
         children: [
           ListTile(
             leading: Image.asset(
-              cartItems.food.imgPath, // Display the food image from imgPath
-              width: 100, // Adjust width as needed
-              height: 200, // Adjust height as needed
-              fit: BoxFit.cover, // Ensure the image fits nicely
+              cartItems.food.imgPath,
+              width: 100,
+              height: 200,
+              fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                // Fallback in case the image fails to load
                 return const Icon(Icons.error, size: 50);
               },
             ),

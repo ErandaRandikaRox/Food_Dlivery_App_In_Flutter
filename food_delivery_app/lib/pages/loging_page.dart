@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/my_textfield.dart';
 import 'package:food_delivery_app/pages/homePage.dart';
+import 'package:food_delivery_app/services/auth/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   final Function? onTap;
@@ -15,12 +16,31 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  void loging() {
-    /*
-    fill out of the authentication
-     */
+  void loging() async {
+// get the auth services
 
-    // Navigation proccess
+    final authservices = AuthServices();
+
+    try {
+      await authservices.signInWithEmailPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text(e.toString()),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text("OK"))
+              ],
+            );
+          });
+    }
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => Homepage()),
@@ -46,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
             SizedBox(height: 25),
-
             Text(
               'Food Delivery App',
               style: TextStyle(
@@ -55,34 +74,27 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             SizedBox(height: 25),
-
             MyTextfield(
               controller: emailController,
               obsecureText: false,
               hintText: 'Email',
               obscureText: false,
             ),
-
             SizedBox(height: 25),
-
             MyTextfield(
               controller: passwordController,
               obsecureText: true,
               hintText: 'Password',
               obscureText: true,
             ),
-
             SizedBox(height: 25),
-
             MyButton(
               ontap: () {
                 loging();
               },
               text: "Sign In",
             ),
-
             SizedBox(height: 25),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
