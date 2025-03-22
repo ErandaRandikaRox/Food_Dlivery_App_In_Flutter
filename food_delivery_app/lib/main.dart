@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/services/auth/auth_gate.dart';
 import 'package:food_delivery_app/models/resturant.dart';
+import 'package:food_delivery_app/splah_screen/splash_screen.dart';
 import 'package:food_delivery_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'firebase_options.dart'; // Import Firebase options
@@ -33,8 +34,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthGate(),
-      theme: Provider.of<ThemeProvider>(context).themedata, // Dynamic theme
+      home: SplashScreen(nextScreen: AuthGate()),
+      theme: Provider.of<ThemeProvider>(context).themedata,
     );
   }
 }
