@@ -5,7 +5,7 @@ import 'package:food_delivery_app/models/resturant.dart';
 import 'package:food_delivery_app/splah_screen/splash_screen.dart';
 import 'package:food_delivery_app/themes/theme_provider.dart';
 import 'package:provider/provider.dart';
-import 'firebase_options.dart'; // Import Firebase options
+import 'firebase_options.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(nextScreen: AuthGate()),
+      home: const SplashScreen(nextScreen: AuthGate()),
       theme: Provider.of<ThemeProvider>(context).themedata,
     );
   }

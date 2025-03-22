@@ -18,12 +18,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _controller = VideoPlayerController.asset('assets/animation/logo.mp4')
       ..initialize().then((_) {
-        setState(() {}); // Update UI when video is ready
-        _controller.play(); // Start playing
-        _controller.setLooping(false); // Play once
+        setState(() {}); 
+        _controller.play(); 
+        _controller.setLooping(false); 
         _controller.addListener(() {
           if (_controller.value.position >= _controller.value.duration) {
-            // Video finished, navigate to next screen
+            
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (_) => widget.nextScreen),
@@ -32,7 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
         });
       }).catchError((error) {
         print('Error initializing video: $error');
-        // Fallback: Navigate if video fails
+      
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (_) => widget.nextScreen),
@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 aspectRatio: _controller.value.aspectRatio,
                 child: VideoPlayer(_controller),
               )
-            : const CircularProgressIndicator(), // Show loading while initializing
+            : const CircularProgressIndicator(), 
       ),
     );
   }
