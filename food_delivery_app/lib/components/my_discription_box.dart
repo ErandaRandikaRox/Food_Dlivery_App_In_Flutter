@@ -20,15 +20,18 @@ class MyDiscriptionBox extends StatelessWidget {
           Column(
             children: [
               // delivery fee
-              Text('\$99', style: primaryTextColor),
+              Text('\$99',
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary)),
               Text("delivery fee", style: secoundaryTextColor),
             ],
           ),
-
           Column(
             children: [
               // delivery time
-              Text("15-30 min", style: primaryTextColor),
+              Text("15-30 min",
+                  style:
+                      TextStyle(color: Theme.of(context).colorScheme.primary)),
               Text("Delivery TIme", style: secoundaryTextColor),
             ],
           ),
